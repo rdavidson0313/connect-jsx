@@ -68,9 +68,9 @@ module.exports = function connect_jsx(root, options) {
             } catch (err) {
                 js = 'throw new Error("Connect-Jsx transforming ' + source_path + ': ' + err.message + '");';
             }
-            res.setHeader('Content-Length', js.length);
-            res.setHeader('Connect-Jsx-Source-Path', source_path);
-            res.setHeader('Content-Type', content_type + (charset ? '; charset=' + charset : ''));
+            res.set('Content-Length', js.length);
+            res.set('Connect-Jsx-Source-Path', source_path);
+            res.set('Content-Type', content_type + (charset ? '; charset=' + charset : ''));
             _write.call(res, js, _encoding);
             _end.call(res);
         };
